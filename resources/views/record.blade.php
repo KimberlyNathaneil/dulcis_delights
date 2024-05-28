@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title> Dulcis Delights - Expenses Record </title>
         <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -13,9 +13,9 @@
         <div class="navbar" id="navbar-expenses">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="index.php">Home</a>
-                    <a class="header-link header-active" href="record.php">Record</a>
-                    <a class="header-link" href="ledger.html">Ledger</a>
+                    <a class="header-link" href="/">Home</a>
+                    <a class="header-link header-active" href="/record">Record</a>
+                    <a class="header-link" href="/ledger">Ledger</a>
                     <!-- <a class="header-link" href="login.html">
                         <img class="account-logo" src="assets/account-logo.png">
                     </a>    -->
@@ -24,9 +24,9 @@
         </div>
         <div class="record" id="record_expenses">
             <div class="record-bar flex-container flex-row">
-                <a class="record-text record-text-active" href="record_expenses.php">Expenses</a>
-                <a class="record-text" href="record_income.php">Income</a>
-                <a class="record-text" href="record_inventory.php">Inventory</a>
+                <a class="record-text record-text-active" href="/record_expenses">Expenses</a>
+                <a class="record-text" href="/record_income">Income</a>
+                <a class="record-text" href="/record_inventory">Inventory</a>
             </div>
         </div>
         <div class="input" id="input_expenses">
@@ -66,18 +66,14 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <?php $i = 1; ?>
-                <?php while ($row = mysqli_fetch_array($result)) : ?> 
-                    <tr>
-                        <td><?= $row['day_date']; ?></td>
-                        <td><?= $row['item_name']; ?></td>
-                        <td><?= $row['quantity']; ?></td>
-                        <td><?= $row['unit_price']; ?></td>
-                        <td><?= $row['total_price']; ?></td>
-                        <td><?= $row['note']; ?></td>
-                    </tr>
-                <?php $i++; ?>
-                <?php endwhile; ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </table>
         </div>
     </body>

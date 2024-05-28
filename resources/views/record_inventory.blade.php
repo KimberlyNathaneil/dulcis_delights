@@ -13,9 +13,9 @@
         <div class="navbar" id="navbar-inventory">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="index.php">Home</a>
-                    <a class="header-link header-active" href="record.php">Record</a>
-                    <a class="header-link" href="ledger.html">Ledger</a>
+                    <a class="header-link" href="/">Home</a>
+                    <a class="header-link header-active" href="/record">Record</a>
+                    <a class="header-link" href="/ledger">Ledger</a>
                     <!-- <a class="header-link" href="login.html">
                         <img class="account-logo" src="assets/account-logo.png">
                     </a>    -->
@@ -24,9 +24,9 @@
         </div>
         <div class="record" id="record_inventory">
             <div class="record-bar flex-container flex-row">
-                <a class="record-text" href="record_expenses.php">Expenses</a>
-                <a class="record-text" href="record_income.php">Income</a>
-                <a class="record-text record-text-active" href="record_inventory.php">Inventory</a>
+                <a class="record-text" href="/record_expenses">Expenses</a>
+                <a class="record-text" href="/record_income">Income</a>
+                <a class="record-text record-text-active" href="/record_inventory">Inventory</a>
             </div>
         </div>
         <div class="input-inv" id="input_inventory">
