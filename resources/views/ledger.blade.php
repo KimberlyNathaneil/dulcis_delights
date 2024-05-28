@@ -95,22 +95,22 @@
             <th>Day & Date</th>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Bubuk Coklat</td>
+            <td>Expenses</td>
+            <td>Rp 10.000</td>
+            <td>Senin, 23 April 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Bubuk Stroberi</td>
+            <td>Expenses</td>
+            <td>Rp 20.000</td>
+            <td>Senin, 23 April 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Bubuk Matcha</td>
+            <td>Expenses</td>
+            <td>Rp 30.000</td>
+            <td>Senin, 23 April 2024</td>
           </tr>       
         </table>
       </div>
@@ -150,22 +150,22 @@
             <th>Day & Date</th>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Mochi Milo</td>
+            <td>Income</td>
+            <td>Rp 240.000</td>
+            <td>Rabu, 3 Mei 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Mochi Stroberi</td>
+            <td>Income</td>
+            <td>Rp 250.000</td>
+            <td>Rabu, 3 Mei 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Mochi Matcha</td>
+            <td>Income</td>
+            <td>Rp 300.000</td>
+            <td>Rabu, 3 Mei 2024</td>
           </tr>       
         </table>
       </div>
@@ -205,22 +205,22 @@
             <th>Day & Date</th>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Bubuk Milo</td>
+            <td>Expenses</td>
+            <td>Rp 50.000</td>
+            <td>Kamis, 18 Juni 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Bubuk Matcha</td>
+            <td>Expenses</td>
+            <td>Rp 40.000</td>
+            <td>Kamis, 18 Juni 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Anggur Muskat</td>
+            <td>Expenses</td>
+            <td>Rp 50.000</td>
+            <td>Jumat, 19 Juni 2024</td>
           </tr>       
         </table>
       </div>
@@ -260,22 +260,22 @@
             <th>Day & Date</th>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Grape Sando</td>
+            <td>Income</td>
+            <td>Rp 200.000</td>
+            <td>Selasa, 20 Juli 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Mochi Milo</td>
+            <td>Income</td>
+            <td>Rp 300.000</td>
+            <td>Selasa, 20 Juli 2024</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>Mochi Stroberi</td>
+            <td>Income</td>
+            <td>Rp 400.000</td>
+            <td>Selasa, 20 Juli 2024</td>
           </tr>       
         </table>
       </div>
