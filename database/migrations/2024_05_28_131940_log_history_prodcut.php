@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pivot_expense_products', function (Blueprint $table) {
+        Schema::create('log_history_product', function (Blueprint $table) {
             $table->id();
-            $table->integer('expense_id')->nullable();
-            $table->integer('unit_price')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pivot_expense_products');
+        Schema::dropIfExists('log_history_product');
     }
 };

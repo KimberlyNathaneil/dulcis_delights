@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('expenses', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id')->nullable();
-            $table->integer('product_id')->nullable();
-            $table->text('note')->nullable();
-            $table->timestamps();
+        Schema::table('income', function (Blueprint $table) {
+            $table->unsignedBigInteger('customer_id')->after('user_id');
+            $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('expenses');
+        Schema::table('income', function (Blueprint $table) {
+            $table->dropColumn('customer_id');
+        });
     }
 };
