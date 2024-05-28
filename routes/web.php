@@ -33,3 +33,11 @@ Route::get('/ledger', function () {
     return view('ledger');
 });
 
+Route::get('/record_inventory', function () {
+    return view('record_inventory');
+});
+
+Route::get('/record_income', function () {
+    return view('record_income');
+});
+

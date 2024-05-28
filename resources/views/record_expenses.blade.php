@@ -67,17 +67,7 @@
                     <td></td>
                 </tr>
                 <?php $i = 1; ?>
-                <?php while ($row = mysqli_fetch_array($result)) : ?> 
-                    <tr>
-                        <td><?= $row['day_date']; ?></td>
-                        <td><?= $row['item_name']; ?></td>
-                        <td><?= $row['quantity']; ?></td>
-                        <td><?= $row['unit_price']; ?></td>
-                        <td><?= $row['total_price']; ?></td>
-                        <td><?= $row['note']; ?></td>
-                    </tr>
-                <?php $i++; ?>
-                <?php endwhile; ?>
+              
             </table>
         </div>
     </body>

@@ -64,16 +64,7 @@
                     <td></td>
                 </tr>
                 <?php $i = 1; ?>
-                <?php while ($row = mysqli_fetch_array($result)) : ?>
-                    <tr>
-                        <td><?= $row['day_date']; ?></td>
-                        <td><?= $row['customer_name']; ?></td>
-                        <td><?= $row['payment_method']; ?></td>
-                        <td><?= $row['amount']; ?></td>
-                        <td><?= $row['note']; ?></td>
-                    </tr>
-                    <?php $i++; ?>
-                <?php endwhile; ?>
+                
             </table>
         </div>
     </body>
