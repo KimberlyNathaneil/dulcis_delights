@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_history_products', function (Blueprint $table) {
+        Schema::create('master_product', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log_history_products');
+        Schema::dropIfExists('master_product');
     }
 };

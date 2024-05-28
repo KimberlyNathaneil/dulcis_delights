@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\expenses;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-return view('welcome');
+    return view('home');
 });
+
+Route::get('/record', function () {
+    return view('record');
+});
+
+Route:: get('/record_expenses', function () {
+    return view('record_expenses', [
+        "title" => "records",
+        "record_expenses" => expenses::all()
+    ]);
+});
+
+Route::get('/ledger', function () {
+    return view('ledger');
+});
+

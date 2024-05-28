@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_payment_methods', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->timestamps();
+        Schema::table('pivot_expense_product', function (Blueprint $table) {
+            $table->unsignedBigInteger('expense_id')->after('id');
+            $table->foreign('expense_id')->references('id')->on('expenses');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_payment_methods');
+        Schema::table('pivot_expense_product', function (Blueprint $table) {
+            $table->dropColumn('expense_id');
+        });
     }
 };
