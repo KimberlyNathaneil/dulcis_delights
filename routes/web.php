@@ -31,6 +31,8 @@ Route:: get('/record_expenses', function () {
 });
 
 Route::resource('ledger', LedgerController::class);
+// Route::resource('record', RecordController::class);
+
 
 Route::get('/record_inventory', function () {
     return view('record_inventory');
@@ -38,4 +40,16 @@ Route::get('/record_inventory', function () {
 
 Route::get('/record_income', function () {
     return view('record_income');
+});
+
+Route::get('/proses_record_expenses', function () {
+    return view('proses_record_expenses');
+});
+
+Route::get('/proses_record_income', function () {
+    return view('proses_record_income');
+});
+
+Route::get('/proses_record_inventory', function () {
+    return view('proses_record_inventory');
 });
