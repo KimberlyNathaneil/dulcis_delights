@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models\expenses;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LedgerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,7 @@ Route:: get('/record_expenses', function () {
     ]);
 });
 
-Route::get('/ledger', function () {
-    return view('ledger');
-});
+Route::resource('ledger', LedgerController::class);
 
 Route::get('/record_inventory', function () {
     return view('record_inventory');
@@ -40,4 +39,3 @@ Route::get('/record_inventory', function () {
 Route::get('/record_income', function () {
     return view('record_income');
 });
-

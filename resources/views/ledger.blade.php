@@ -94,13 +94,15 @@
             <th>Amount</th>
             <th>Day & Date</th>
           </tr>
+          @foreach ($ledgers as $ledger)
           <tr>
-            <td>Bubuk Coklat</td>
-            <td>Expenses</td>
-            <td>Rp 10.000</td>
-            <td>Senin, 23 April 2024</td>
+            <td>{{$ledger->transaction}}</td>
+            <td>{{$ledger->category}}</td>
+            <td>Rp. {{$ledger->amount}}</td>
+            <td>{{$ledger->date}}</td>
           </tr>
-          <tr>
+          @endforeach
+          <!-- <tr>
             <td>Bubuk Stroberi</td>
             <td>Expenses</td>
             <td>Rp 20.000</td>
@@ -111,7 +113,7 @@
             <td>Expenses</td>
             <td>Rp 30.000</td>
             <td>Senin, 23 April 2024</td>
-          </tr>       
+          </tr>        -->
         </table>
       </div>
 
