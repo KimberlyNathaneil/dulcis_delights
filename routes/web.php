@@ -23,6 +23,12 @@ Route::get('/login', function (){
     return view('login.index');
 });
 
+Route::get('login', [AuthController::class, 'index'])->name('login');
+
+Route::post('post-login', [AuthController::class, 'postLogin']);
+
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::get('/record', function () {
     return view('record');
 });

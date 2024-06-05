@@ -74,5 +74,28 @@ class UsersController extends Controller
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 
-    
+    public function index () {
+        return view('auth.login');
+    }
+
+    public function postLogin(Request $request) {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ])
+
+        $crendentials = $request->only('email', 'password');
+        if (Auth:attempt($crendentials)) {
+            return redirect()->intended('dashboard')
+                                        ->withSuccess('Login Berhasil!');
+        }
+
+        return redirect("login")->withSuccess('Gagal Login!');
+    }
+
+    public function logout() {
+        Session::flush();
+        Auth::Logout();
+        return Redirect('login');
+    }
 }
