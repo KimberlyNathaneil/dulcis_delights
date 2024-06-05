@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expense;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -11,7 +12,13 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        
+        $expenses = Expense::all();
+        return view('record_expenses', [
+            'expenses' => $expenses
+        ]);
+        
+    
     }
 
     /**
@@ -19,15 +26,25 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        
     }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //a
+        Expense::create([
+            'date' => request('date'),
+            'item_name' => request('item_name'),
+            'qty' => request('qty'),
+            'unit_price' => request('unit_price'),
+            'total_price' => request('total_price'),
+            'note' => request('note'),
+        ]);
+
+        return redirect('record_expenses');
     }
 
     /**
@@ -41,9 +58,11 @@ class ExpenseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Expense $expense)
     {
-        //
+        return view('record_expenses', [
+            'expense' => $expense
+        ]);
     }
 
     /**

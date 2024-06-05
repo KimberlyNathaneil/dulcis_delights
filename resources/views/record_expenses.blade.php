@@ -14,7 +14,7 @@
             <div class="header">
                 <div class="flex-container flex-row">
                     <a class="header-link" href="/">Home</a>
-                    <a class="header-link header-active" href="/record">Record</a>
+                    <a class="header-link header-active" href="/record_expenses">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
                     <!-- <a class="header-link" href="login.html">
                         <img class="account-logo" src="assets/account-logo.png">
@@ -31,11 +31,12 @@
         </div>
         <div class="input" id="input_expenses">
             <div class="input-content flex-container flex-col">
-                <form action="proses_record_expenses.php" method="post">
+                <form action="" method="post">
+                    @csrf
                     <div class="input-box flex-container flex-row">
-                        <input type="text" id="day_date" name="day_date" placeholder="Day, Date" required>
+                        <input type="date" id="date" name="date" placeholder="Date" required>
                         <input type="text" id="item_name" name="item_name" placeholder="Item Name" required>
-                        <input type="number" id="quantity" name="quantity" placeholder="Qty" required>
+                        <input type="number" id="qty" name="qty" placeholder="Qty" required>
                         <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required>
                         <input type="number" id="total_price" name="total_price" placeholder="Total Price" required>
                         <input type="text" id="note" name="note" placeholder="Note" required>
@@ -57,15 +58,19 @@
                     <th span="1" style="width: 20em;">Unit Price</th>
                     <th span="1" style="width: 20em;">Total Price</th>
                     <th span="1" style="width: 20em; border-right: 0.2em solid black;">Note</th>
+                    <th span="1" style="width: 20em;">Action</th>
                 </tr>
-                <tr class="table-hidden">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                @foreach ($expenses as $expense )
+                <tr>
+                    <td span="1" style="width: 20em;">{{ $expense->date }}</td>
+                    <td span="1" style="width: 20em;">{{ $expense->item_name }}</td>
+                    <td span="1" style="width: 5em">{{ $expense->qty }}</td>
+                    <td span="1" style="width: 20em;">{{ $expense->unit_price }}</td>
+                    <td span="1" style="width: 20em;">{{ $expense->total_price }}</td>
+                    <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $expense->note }}</td>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
                 </tr>
+                @endforeach
                 <?php $i = 1; ?>
               
             </table>

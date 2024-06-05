@@ -14,7 +14,7 @@
             <div class="header">
                 <div class="flex-container flex-row">
                     <a class="header-link" href="/">Home</a>
-                    <a class="header-link header-active" href="/record">Record</a>
+                    <a class="header-link header-active" href="/record_expenses">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
                     <!-- <a class="header-link" href="login.html">
                         <img class="account-logo" src="assets/account-logo.png">
@@ -31,9 +31,10 @@
         </div>
         <div class="input" id="input_income">
             <div class="input-content flex-container flex-col">
-                <form method="post" action="proses_record_income.php">
+                <form action="" method="post">
+                    @csrf
                     <div class="input-box flex-container flex-row">
-                        <input type="text" id="day_date" name="day_date" placeholder="Day, Date" required>
+                        <input type="date" id="date" name="date" placeholder="Date" required>
                         <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name" required>
                         <input type="text" id="payment_method" name="payment_method" placeholder="Payment Method" required>
                         <input type="number" id="amount" name="amount" placeholder="Amount" required>
@@ -55,14 +56,18 @@
                     <th span="1" style="width: 20em;">Payment Method</th>
                     <th span="1" style="width: 20em;">Amount</th>
                     <th span="1" style="width: 20em; border-right: 0.2em solid black;">Note</th>
+                    <th span="1" style="width: 20em;">Action</th>
                 </tr>
-                <tr class="table-hidden">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                @foreach ($incomes as $income )
+                <tr>
+                    <td span="1" style="width: 20em;">{{ $income->date }}</td>
+                    <td span="1" style="width: 20em;">{{ $income->customer_name }}</td>
+                    <td span="1" style="width: 5em">{{ $income->payment_method }}</td>
+                    <td span="1" style="width: 20em;">{{ $income->amount }}</td>
+                    <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $income->note }}</td>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
                 </tr>
+                @endforeach
                 <?php $i = 1; ?>
                 
             </table>

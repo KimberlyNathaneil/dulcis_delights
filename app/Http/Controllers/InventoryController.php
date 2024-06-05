@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
-class RecordController extends Controller
+class InventoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
+        $inventories = Inventory::all();
+        return view('record_inventory', [
+            'inventories' => $inventories
+        ]);
+        
+    
     }
 
     /**
@@ -19,15 +26,22 @@ class RecordController extends Controller
      */
     public function create()
     {
-        //
+        
     }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //a
+        Inventory::create([
+            'item_name' => request('item_name'),
+            'unit_price' => request('unit_price'),
+            'qty' => request('qty'),
+        ]);
+
+        return redirect('record_inventory');
     }
 
     /**
@@ -41,9 +55,11 @@ class RecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Inventory $inventory)
     {
-        //
+        return view('record_inventory', [
+            'inventory' => $inventory
+        ]);
     }
 
     /**

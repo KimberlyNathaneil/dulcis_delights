@@ -31,11 +31,12 @@
         </div>
         <div class="input-inv" id="input_inventory">
             <div class="input-content flex-container flex-col">
-                <form action="proses_record_inventory.php" method="post">
+                <form action="" method="post">
+                    @csrf
                     <div class="input-box flex-container flex-row">
                         <input type="text" id="item_name" name="item_name" placeholder="Item Name" required>
                         <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required>
-                        <input type="number" id="quantity" name="quantity" placeholder="Qty" required>
+                        <input type="number" id="qty" name="qty" placeholder="Qty" required>
                     </div> 
                     <div class="input-submit flex-container flex-end">
                         <div class="submit-wrap">
@@ -51,13 +52,18 @@
                     <th span="1" style="width: 33em;">Item Name</th>
                     <th span="1" style="width: 33em;">Unit Price</th>
                     <th span="1" style="width: 33em; border-right: 0.2em solid black;">Quantity</th>
+                    <th span="1" style="width: 20em;">Action</th>
                 </tr>
-                <tr class="table-hidden">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                @foreach ($inventories as $inventory )
                 <tr>
+                    <td span="1" style="width: 20em;">{{ $inventory->item_name }}</td>
+                    <td span="1" style="width: 20em;">{{ $inventory->unit_price }}</td>
+                    <td span="1" style="width: 5em">{{ $inventory->qty}}</td>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
+                </tr>
+                @endforeach
+                <?php $i = 1; ?>
+                {{-- <tr>
                     <td></td>
                     <td></td>
                     <td>
@@ -77,11 +83,11 @@
                         <button id="inv-popup-btn">Confirm</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </body>
 </html>
-<script>
+{{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         let popupOverlay = document.getElementById('inv-popup-overlay');
         let popup = document.getElementById('inv-popup');
@@ -118,5 +124,4 @@
             }
         });        
     });
-</script>
-    
+</script> --}}

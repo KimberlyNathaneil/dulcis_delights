@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
@@ -84,18 +84,18 @@ class UsersController extends Controller
             'password' => 'required',
         ])
 
-        $crendentials = $request->only('email', 'password');
-        if (Auth:attempt($crendentials)) {
-            return redirect()->intended('dashboard')
-                                        ->withSuccess('Login Berhasil!');
-        }
+//     //     $crendentials = $request->only('email', 'password');
+//     //     if (Auth:attempt($crendentials)) {
+//     //         return redirect()->intended('dashboard')
+//     //                                     ->withSuccess('Login Berhasil!');
+//     //     }
 
-        return redirect("login")->withSuccess('Gagal Login!');
-    }
+//     //     return redirect("login")->withSuccess('Gagal Login!');
+//     // }
 
-    public function logout() {
-        Session::flush();
-        Auth::Logout();
-        return Redirect('login');
+//     // public function logout() {
+//     //     Session::flush();
+//     //     Auth::Logout();
+//     //     return Redirect('login');
     }
 }

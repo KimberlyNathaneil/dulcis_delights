@@ -2,74 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Income;
 use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
+        
         $incomes = Income::all();
-        return Response::json($incomes);
+        return view('record_income', [
+            'incomes' => $incomes
+        ]);
+        
+    
     }
 
-    public function show($id)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $income = Income::find($id);
-        if (!$income) {
-            return Response::json(['message' => 'Income not found'], 404);
-        }
-        return Response::json($income);
+        
     }
+    
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $validated = $this->validate($request, [
-            'customer_id' => 'required|integer',
-            'payment_method_id' => 'required|integer',
+        Income::create([
+            'date' => request('date'),
+            'customer_name' => request('customer_name'),
+            'payment_method' => request('payment_method'),
+            'amount' => request('amount'),
+            'note' => request('note'),
         ]);
 
-        if ($validated !== true) {
-            return Response::json($validated, 422);
-        }
-
-        $income = Income::create($request->all());
-        return Response::json($income, 201);
+        return redirect('record_income');
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $income = Income::find($id);
-        if (!$income) {
-            return Response::json(['message' => 'Income not found'], 404);
-        }
+        //
+    }
 
-        $validated = $this->validate($request, [
-            'customer_id' => 'sometimes|required|integer',
-            'payment_method_id' => 'sometimes|required|integer',
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Income $income)
+    {
+        return view('record_income', [
+            'income' => $income
         ]);
-
-        if ($validated !== true) {
-            return Response::json($validated, 422);
-        }
-
-        $income->update($request->all());
-        return Response::json($income);
     }
 
-    public function destroy($id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
-        $income = Income::find($id);
-        if (!$income) {
-            return Response::json(['message' => 'Income not found'], 404);
-        }
-
-        $income->delete();
-        return Response::json(['message' => 'Income deleted successfully']);
+        //
     }
 
-    private function validate(Request $request, array $rules)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
-        // Replace with actual validation logic
-        return true;
+        //
     }
 }
