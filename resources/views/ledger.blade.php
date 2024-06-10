@@ -31,89 +31,95 @@
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftApr" href="#"><h2>April</h2></a>
-              <h2>Total Expense<br>Rp 0</h2>
-              <h2>Total Income<br>Rp 0</h2>
+              <h2>Total Expense<br>{{$april_total_expense}}</h2>
+              <h2>Total Income<br>{{$april_total_income}}</h2>
           </div>
         </div>
 
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftMay" href="#"><h2>May</h2></a>
-              <h2>Total Expense<br>Rp 0</h2>
-              <h2>Total Income<br>Rp 0</h2>
+              <h2>Total Expense<br>{{$may_total_expense}}</h2>
+              <h2>Total Income<br>{{$may_total_income}}</h2>
           </div>
         </div>
 
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftJun" href="#"><h2>June</h2></a>
-              <h2>Total Expense<br>Rp 0</h2>
-              <h2>Total Income<br>Rp 0</h2>
+              <h2>Total Expense<br>{{$june_total_expense}}</h2>
+              <h2>Total Income<br>{{$june_total_income}}</h2>
           </div>
         </div>
 
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftJul" href="#"><h2>July</h2></a>
-              <h2>Total Expense<br>Rp 0</h2>
-              <h2>Total Income<br>Rp 0</h2>
+              <h2>Total Expense<br>{{$july_total_expense}}</h2>
+              <h2>Total Income<br>{{$july_total_income}}</h2>
           </div>
         </div>
       </div>
       <div class="right_side APR" id="apr">
         <div>
-        <p class="title">APR 2024</p>
+        <p class="title">JUN 2024</p>
         <p class="subtitle">Current Month</p>
         </div>
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
           <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
               <h2>Month Expenses</h2>
-              <h2>Rp 0</h2>
+              <h2>{{$total_expense}}</h2>
           </div>
   
           <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
               <h2>Month Income</h2>
-              <h2>Rp 0</h2>
+              <h2>{{$total_income}}</h2>
           </div>
         </div>
 
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
           <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
               <h4>Filter</h4>
-              <select name="" id="">
-                <option value="">income</option>
-                <option value="">expense</option>
+              <select name="" id="ledger_select">
+                <option value="income" onclick=ledge();>income</option>
+                <option value="expense" onclick=ledge();>expense</option>
               </select>
           </div>
         </div>
 
-        <table>
+        <!-- INI TABEL INCOME -->
+        <table id="show_income">
           <tr>
             <th>Transactions</th>
             <th>Category</th>
             <th>Amount</th>
             <th>Day & Date</th>
           </tr>
-          @foreach ($ledgers as $ledger)
+          @foreach($incomes as $income)
           <tr>
-            <td>{{$ledger->transaction}}</td>
-            <td>{{$ledger->category}}</td>
-            <td>Rp. {{$ledger->amount}}</td>
-            <td>{{$ledger->date}}</td>
+            <td>{{$income->customer_name}}</td>
+            <td>Income</td>
+            <td>{{$income->amount}}</td>
+            <td>{{$income->date}}</td>
           </tr>
           @endforeach
-          <!-- <tr>
-            <td>Bubuk Stroberi</td>
-            <td>Expenses</td>
-            <td>Rp 20.000</td>
-            <td>Senin, 23 April 2024</td>
-          </tr>
+        </table>
+        <!-- INI TABEL EXPENSE -->
+        <table id="show_expense">
           <tr>
-            <td>Bubuk Matcha</td>
-            <td>Expenses</td>
-            <td>Rp 30.000</td>
-            <td>Senin, 23 April 2024</td>
-          </tr>        -->
+            <th>Transactions</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Day & Date</th>
+          </tr>
+          @foreach($expenses as $expense)
+          <tr>
+            <td>{{$expense->item_name}}</td>
+            <td>Expense</td>
+            <td>{{$expense->total_price}}</td>
+            <td>{{$expense->date}}</td>
+          </tr>
+          @endforeach
         </table>
       </div>
 
@@ -134,17 +140,17 @@
           </div>
         </div>
 
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
+        <!-- <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
           <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
               <h4>Filter</h4>
-              <select name="" id="">
-                <option value="">income</option>
-                <option value="">expense</option>
+              <select name="" id="ledger_select">
+                <option value="income">income</option>
+                <option value="expense">expense</option>
               </select>
           </div>
-        </div>
+        </div> -->
 
-        <table>
+        <!-- <table>
           <tr>
             <th>Transactions</th>
             <th>Category</th>
@@ -169,10 +175,10 @@
             <td>Rp 300.000</td>
             <td>Rabu, 3 Mei 2024</td>
           </tr>       
-        </table>
+        </table> -->
       </div>
 
-      <div class="right_side JUN" id="jun">
+      <!-- <div class="right_side JUN" id="jun">
         <div>
         <p class="title">JUN 2024</p>
         <p class="subtitle">Current Month</p>
@@ -199,7 +205,7 @@
           </div>
         </div>
 
-        <table>
+        <!-- <table>
           <tr>
             <th>Transactions</th>
             <th>Category</th>
@@ -224,10 +230,10 @@
             <td>Rp 50.000</td>
             <td>Jumat, 19 Juni 2024</td>
           </tr>       
-        </table>
-      </div>
+        </table> -->
+      </div> -->
 
-      <div class="right_side JUL" id="jul">
+      <!-- <div class="right_side JUL" id="jul">
         <div>
         <p class="title">JUL 2024</p>
         <p class="subtitle">Current Month</p>
@@ -280,7 +286,7 @@
             <td>Selasa, 20 Juli 2024</td>
           </tr>       
         </table>
-      </div>
+      </div> -->
       
 
 
@@ -289,4 +295,20 @@
       
   </body>
 </html>
-<script src="/js/script.js"></script>
+
+<script>
+  function ledge(){
+    let ledger = document.getElementById('ledger_select').value;
+    let show_income = document.querySelector('#show_income');
+    let show_expense = document.querySelector('#show_expense');
+    if(ledger == 'income'){
+      // alert('ini income');
+      show_expense.classList.add('hidden');
+      show_income.classList.remove('hidden');
+    }else{
+      // alert('ini expense');
+      show_income.classList.add('hidden');
+      show_expense.classList.remove('hidden');
+    };
+  }
+</script>
