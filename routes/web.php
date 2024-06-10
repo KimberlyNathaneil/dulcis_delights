@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\income;
 use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\LedgerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InventoryController;
+use App\Models\Inventory;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +42,15 @@ Route::resource('record_income', IncomeController::class);
 
 Route::resource('record_inventory', InventoryController::class);
 
-Route::resource('ledger', LedgerController::class);
+// Route::resource('ledger', LedgerController::class);
+Route::get('ledger', function(){
+    $expenses = Expense::all();
+    $incomes = income::all();
+    $inventories = Inventory::all();
+    return view('ledger', [
+        'expenses' => $expenses,
+        'incomes' => $incomes,
+        'inventories' => $inventories
+    ]);
+});
 // Route::resource('record', RecordController::class);

@@ -14,7 +14,7 @@ class home extends Model
 
     public function expenses()
     {
-        return $this->hasMany(expenses::class);
+        return $this->hasMany(Expense::class);
     }
 
     public function income()
