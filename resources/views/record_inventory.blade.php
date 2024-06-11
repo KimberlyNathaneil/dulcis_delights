@@ -13,7 +13,7 @@
         <div class="navbar" id="navbar-inventory">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="/">Home</a>
+                    <a class="header-link" href="/home">Home</a>
                     <a class="header-link header-active" href="/record">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
                     <!-- <a class="header-link" href="login.html">

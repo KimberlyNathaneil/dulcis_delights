@@ -14,7 +14,7 @@
         <div class="navbar" id="navbar">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="/">Home</a>
+                    <a class="header-link" href="/home">Home</a>
                     <a class="header-link" href="/record_expenses">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
                     <!-- <a class="header-link" href="login.html">

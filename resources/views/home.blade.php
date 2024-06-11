@@ -14,7 +14,7 @@
         <div class="navbar" id="navbar">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="/">Home</a>
+                    <a class="header-link" href="/home">Home</a>
                     <a class="header-link" href="/record_expenses">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
                     <a class="header-link" href="index">
@@ -28,12 +28,12 @@
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
             <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; text-align: center; margin-top: 50px; ">
                 <h2 style="color: white">Month Expenses</h2>
-                <h2 style="color: white"> Rp 16.000 </h2>
+                <h2 style="color: white"> Rp {{$monthExpense}} </h2>
             </div>
     
             <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; margin-top: 50px; ">
                 <h2 style="color: white">Month Income</h2>
-                <h2 style="color: white"> Rp 11.000 </h2>
+                <h2 style="color: white"> Rp {{$monthIncome}}  </h2>
             </div>
         </div>
             <!-- <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
@@ -98,68 +98,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
-                <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                    <h2 style="color: white"> 2-1-2024 </h2>
-                </div>
-                <div style="display: flex; gap: 8rem;">
-                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                        <h2 style="color: white"> + Rp 0 </h2>
-                    </div>
-                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
-                        <h2 style="color: white"> - Rp 5.000 </h2>
-                    </div>
-                </div>
-            </div>
-            <div style="background-color: #164863; border-radius: 100px; padding: 20px; margin-top: 20px; margin-left: 2rem; margin-right: 2rem; ">
-                <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
-                    <div style="display: flex; flex: 1; gap: 64px;">
-                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Tepung Maizena</h2>
-                        </div>
-                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Pembelian di Alfamart </h2>
-                        </div>
-                    </div>
-                    <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
-                        <!-- <h2> (-) xxx.xxx </h2> -->
-                        <h2></h2>
-                        <h2> - Rp 5.000 </h2>
-                    </div>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
-                <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                    <h2 style="color: white"> 3-1-2024 </h2>
-                </div>
-                <div style="display: flex; gap: 8rem;">
-                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                        <h2 style="color: white"> + Rp 11.000 </h2>
-                    </div>
-                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
-                        <h2 style="color: white"> - Rp 0 </h2>
-                    </div>
-                </div>
-            </div>
-            <div style="background-color: #164863; border-radius: 100px; padding: 20px; margin-top: 20px; margin-left: 2rem; margin-right: 2rem; ">
-                <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
-                    <div style="display: flex; flex: 1; gap: 64px;">
-                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Bundling 5 Mochi </h2>
-                        </div>
-                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> TRF </h2>
-                        </div>
-                    </div>
-                    <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
-                        <h2> + Rp 11.000 </h2>
-                        <h2></h2>
-                        <!-- <h2> (-) xxx.xxx </h2> -->
-                    </div>
-                </div>
-            </div>
-       
+            
         </section>
           
     </body>

@@ -3,99 +3,97 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        return view('users.index', compact('users'));
-    }
+    // // Show the form for creating a new user.
+    // public function create()
+    // {
+    //     return view('users.create');
+    // }
 
-    // Show the form for creating a new user.
-    public function create()
-    {
-        return view('users.create');
-    }
+    // // Store a newly created user in storage.
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:8|confirmed',
+    //     ]);
 
-    // Store a newly created user in storage.
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+    //     $validatedData['password'] = bcrypt($validatedData['password']);
 
-        $validatedData['password'] = bcrypt($validatedData['password']);
+    //     $user = User::create($validatedData);
 
-        $user = User::create($validatedData);
+    //     return redirect()->route('users.index')->with('success', 'User created successfully.');
+    // }
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
-    }
+    // // Display the specified user.
+    // public function show(User $user)
+    // {
+    //     return view('users.show', compact('user'));
+    // }
 
-    // Display the specified user.
-    public function show(User $user)
-    {
-        return view('users.show', compact('user'));
-    }
+    // // Show the form for editing the specified user.
+    // public function edit(User $user)
+    // {
+    //     return view('users.edit', compact('user'));
+    // }
 
-    // Show the form for editing the specified user.
-    public function edit(User $user)
-    {
-        return view('users.edit', compact('user'));
-    }
+    // // Update the specified user in storage.
+    // public function update(Request $request, User $user)
+    // {
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+    //         'password' => 'nullable|string|min:8|confirmed',
+    //     ]);
 
-    // Update the specified user in storage.
-    public function update(Request $request, User $user)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
+    //     if ($request->filled('password')) {
+    //         $validatedData['password'] = bcrypt($validatedData['password']);
+    //     } else {
+    //         unset($validatedData['password']);
+    //     }
 
-        if ($request->filled('password')) {
-            $validatedData['password'] = bcrypt($validatedData['password']);
-        } else {
-            unset($validatedData['password']);
-        }
+    //     $user->update($validatedData);
 
-        $user->update($validatedData);
+    //     return redirect()->route('users.index')->with('success', 'User updated successfully.');
+    // }
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
-    }
+    // // Remove the specified user from storage.
+    // public function destroy(User $user)
+    // {
+    //     $user->delete();
 
-    // Remove the specified user from storage.
-    public function destroy(User $user)
-    {
-        $user->delete();
-
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
-    }
+    //     return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+    // }
 
     public function index () {
-        return view('auth.login');
+        return view('login.index');
     }
 
-    public function postLogin(Request $request) {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ])
+    public function login(Request $request)
+    {
+        $valid_users = [
+            ['email' => 'evelyn.aurelia@itbss.ac.id', 'password' => 'dulcisenak'],
+            ['email' => 'kimberly.nathaneil@itbss.ac.id', 'password' => 'dulcisenak'],
+            ['email' => 'valentino.chandra@itbss.ac.id', 'password' => 'dulcisenak'],
+        ];
 
-//     //     $crendentials = $request->only('email', 'password');
-//     //     if (Auth:attempt($crendentials)) {
-//     //         return redirect()->intended('dashboard')
-//     //                                     ->withSuccess('Login Berhasil!');
-//     //     }
+        $credentials = $request->only('email', 'password');
 
-//     //     return redirect("login")->withSuccess('Gagal Login!');
-//     // }
-
-//     // public function logout() {
-//     //     Session::flush();
-//     //     Auth::Logout();
-//     //     return Redirect('login');
+        foreach ($valid_users as $user) {
+            if ($user['email'] == $credentials['email'] && $user['password'] == $credentials['password']) {
+                $userModel = new User;
+                $userModel->email = $user['email'];
+                Auth::login($userModel);
+                return view('../home');
+            }
+        }
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 }

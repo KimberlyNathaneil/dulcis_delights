@@ -4,10 +4,10 @@ use App\Models\income;
 use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
-use App\Http\Controllers\LedgerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InventoryController;
-use App\Models\Inventory;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +20,11 @@ use App\Models\Inventory;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', function (){
+    return view('index');
 });
 
-Route::get('/login', function (){
-    return view('login.index');
-});
+Route::get('/home', [HomeController::class, 'index']);
 
 // Route::get('login', [AuthController::class, 'index'])->name('login');
 
@@ -38,7 +36,6 @@ Route::get('/login', function (){
 Route::resource('record_expenses', ExpenseController::class);
 
 Route::resource('record_income', IncomeController::class);
-
 
 Route::resource('record_inventory', InventoryController::class);
 
@@ -79,4 +76,7 @@ Route::get('ledger', function(){
 
     
 });
+
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
 // Route::resource('record', RecordController::class);
