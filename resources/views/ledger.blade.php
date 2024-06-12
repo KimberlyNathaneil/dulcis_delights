@@ -297,6 +297,7 @@
 </html>
 
 <script>
+  // alert
   function ledge(){
     let ledger = document.getElementById('ledger_select').value;
     let show_income = document.querySelector('#show_income');
