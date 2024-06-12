@@ -17,8 +17,8 @@
                     <a class="header-link" href="/home">Home</a>
                     <a class="header-link" href="/record_expenses">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
-                    {{-- <a class="header-link" href="index">
-                        <img class="account-logo" src="assets/account-logo.png"> --}}
+                    <a class="header-link" href="index">
+                        <img class="account-logo" src="assets/account-logo.png"> 
                     </a>
                 </div>
             </div>  
