@@ -89,7 +89,7 @@ class UserController extends Controller
                 $userModel = new User;
                 $userModel->email = $user['email'];
                 Auth::login($userModel);
-                return view('../home');
+                return redirect()->route('home');
             }
         }
         return back()->withErrors([

@@ -21,12 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('home', function ($view) {
-            $controller = new UserController();
-            $monthExpense = $controller->monthExpense();
-            $monthIncome = $controller->monthIncome();
-            $view->with('monthExpense', $monthExpense);
-            $view->with('monthIncome', $monthIncome);
-        });
+        //
     }
 }
