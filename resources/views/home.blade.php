@@ -67,30 +67,29 @@
                 </div>
             </div> -->
 
-        @foreach($groupedTransactions as $date => $transactions)
-            @php
-                $totalIncome = $transactions->whereInstanceOf(Income::class)->sum('amount');
-                $totalExpense = $transactions->whereInstanceOf(Expense::class)->sum('total_price');
-            @endphp
-            <div class="style=display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
+        @foreach($transactionData as $date => $data)
+            <div style="style=display: flex; align-items: center; margin-right: 4rem; justify-content: space-around; margin-left: 4rem;">
                 <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
                     <h2 style="color: white"> {{ $date }} </h2>
                 </div>
                 <div style="display: flex; gap: 8rem;">
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                        <h2 style="color: white"> + Rp {{ $totalIncome }} </h2>
+                        <h2 style="color: white"> + Rp {{ number_format($data['totalIncome'], 0, '', '.') }} </h2>
                     </div>
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
-                        <h2 style="color: white"> - Rp {{ $totalExpense }} </h2>
+                        <h2 style="color: white"> - Rp {{ number_format($data['totalExpense'], 0, '', '.') }} </h2>
                     </div>
                 </div>
             </div>
-            @foreach($transactions as $transaction)
+            @foreach($data['transactions'] as $transactionData)
+                @php
+                    $transaction = $transactionData['transaction'];
+                @endphp
                 <div style="background-color: #164863; border-radius: 100px; padding: 20px; margin-top: 20px; margin-left: 2rem; margin-right: 2rem; ">
                     <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                         <div style="display: flex; flex: 1; gap: 64px;">
                             <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                                <h2> {{ $transaction->item_name ?? $transaction->customer_name }} </h2>                        
+                                <h2> {{  $transaction->item_name ?? $transaction->customer_name }} </h2>                        
                             </div>
                             <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
                                 <h2> {{ $transaction->note }} </h2>
@@ -98,18 +97,16 @@
                         </div>
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
                             <h2></h2>
-                            @if ($transaction instanceof Income)
-                                <h2> + Rp {{ $transaction->amount }} </h2>
+                            @if ($transactionData['isIncome'])
+                                <h2> + Rp {{ number_format($transaction->amount, 0, '', '.') }} </h2>
                             @else
-                                <h2> - Rp {{ $transaction->total_price }} </h2>
+                                <h2> - Rp {{ number_format($transaction->total_price, 0, '', '.') }} </h2>
                             @endif
                         </div>
                     </div>
                 </div>
             @endforeach
-        @endforeach
-        
-
+        @endforeach     
         </section>
     </body>
 </html>

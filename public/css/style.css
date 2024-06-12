@@ -116,11 +116,11 @@
     text-decoration: underline;
     text-underline-offset: 0.3em;
   }
-  /* 
+  
   .header .account-logo {
     width: 3.5vw;
     height: 7vh;
-  } */
+  } 
   
   .header .header-active {
     text-decoration: underline;
