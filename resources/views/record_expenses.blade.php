@@ -65,8 +65,8 @@
                     <td span="1" style="width: 20em;">{{ $expense->date }}</td>
                     <td span="1" style="width: 20em;">{{ $expense->item_name }}</td>
                     <td span="1" style="width: 5em">{{ $expense->qty }}</td>
-                    <td span="1" style="width: 20em;">{{ $expense->unit_price }}</td>
-                    <td span="1" style="width: 20em;">{{ $expense->total_price }}</td>
+                    <td span="1" style="width: 20em;">Rp {{number_format($expense->unit_price, 0, '', '.')}}</td>
+                    <td span="1" style="width: 20em;">Rp {{number_format($expense->total_price, 0, '', '.') }}</td>
                     <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $expense->note }}</td>
                     <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
                 </tr>

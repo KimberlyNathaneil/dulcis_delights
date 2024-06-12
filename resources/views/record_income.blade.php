@@ -63,7 +63,7 @@
                     <td span="1" style="width: 20em;">{{ $income->date }}</td>
                     <td span="1" style="width: 20em;">{{ $income->customer_name }}</td>
                     <td span="1" style="width: 5em">{{ $income->payment_method }}</td>
-                    <td span="1" style="width: 20em;">{{ $income->amount }}</td>
+                    <td span="1" style="width: 20em;">Rp {{number_format($income->amount, 0, '', '.')}}</td>
                     <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $income->note }}</td>
                     <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
                 </tr>

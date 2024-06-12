@@ -57,7 +57,7 @@
                 @foreach ($inventories as $inventory )
                 <tr>
                     <td span="1" style="width: 20em;">{{ $inventory->item_name }}</td>
-                    <td span="1" style="width: 20em;">{{ $inventory->unit_price }}</td>
+                    <td span="1" style="width: 20em;">Rp {{number_format($inventory->unit_price, 0, '', '.')}}</td>
                     <td span="1" style="width: 5em">{{ $inventory->qty}}</td>
                     <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
                 </tr>

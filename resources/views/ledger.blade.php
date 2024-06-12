@@ -31,32 +31,32 @@
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftApr" href="#"><h2>April</h2></a>
-              <h2>Total Expense<br>Rp {{$april_total_expense}}</h2>
-              <h2>Total Income<br>Rp {{$april_total_income}}</h2>
+              <h2>Total Expense<br>Rp {{number_format($april_total_expense, 0, '', '.')}}</h2>
+              <h2>Total Income<br>Rp {{number_format($april_total_income, 0, '', '.')}}</h2>
           </div>
         </div>
 
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftMay" href="#"><h2>May</h2></a>
-              <h2>Total Expense<br>Rp {{$may_total_expense}}</h2>
-              <h2>Total Income<br>Rp {{$may_total_income}}</h2>
+              <h2>Total Expense<br>Rp {{number_format($may_total_expense, 0, '', '.')}}</h2>
+              <h2>Total Income<br>Rp {{number_format($may_total_income, 0, '', '.')}}</h2>
           </div>
         </div>
 
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftJun" href="#"><h2>June</h2></a>
-              <h2>Total Expense<br>Rp {{$june_total_expense}}</h2>
-              <h2>Total Income<br>Rp {{$june_total_income}}</h2>
+              <h2>Total Expense<br>Rp {{number_format($june_total_expense, 0, '', '.')}}</h2>
+              <h2>Total Income<br>Rp {{number_format($june_total_income, 0, '', '.')}}</h2>
           </div>
         </div>
 
         <div style="margin-right: 1rem; margin-left: 1rem;">
           <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
               <a id="leftJul" href="#"><h2>July</h2></a>
-              <h2>Total Expense<br>Rp {{$july_total_expense}}</h2>
-              <h2>Total Income<br>Rp {{$july_total_income}}</h2>
+              <h2>Total Expense<br>Rp {{number_format($july_total_expense, 0, '', '.')}}</h2>
+              <h2>Total Income<br>Rp {{number_format($july_total_income, 0, '', '.')}}</h2>
           </div>
         </div>
       </div>
@@ -68,12 +68,12 @@
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
           <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
               <h2>Month Expenses</h2>
-              <h2>Rp {{$total_expense}}</h2>
+              <h2>Rp {{number_format($total_expense, 0, '', '.')}}</h2>
           </div>
   
           <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
               <h2>Month Income</h2>
-              <h2>Rp {{$total_income}}</h2>
+              <h2>Rp {{number_format($total_income, 0, '', '.')}}</h2>
           </div>
         </div>
 
@@ -99,7 +99,7 @@
           <tr>
             <td>{{$income->customer_name}}</td>
             <td>Income</td>
-            <td>Rp {{$income->amount}}</td>
+            <td>Rp {{number_format($income->amount, 0, '', '.')}}</td>
             <td>{{$income->date}}</td>
           </tr>
           @endforeach
@@ -116,7 +116,7 @@
           <tr>
             <td>{{$expense->item_name}}</td>
             <td>Expense</td>
-            <td>Rp {{$expense->total_price}}</td>
+            <td>Rp {{number_format($expense->total_price, 0, '', '.')}}</td>
             <td>{{$expense->date}}</td>
           </tr>
           @endforeach
