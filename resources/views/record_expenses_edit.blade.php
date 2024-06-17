@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title> Dulcis Delights - Expenses Record </title>
         <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -31,15 +31,16 @@
         </div>
         <div class="input" id="input_expenses">
             <div class="input-content flex-container flex-col">
-                <form action="" method="post">
+                <form action="/expenses/{{$expense->id}}" method="POST">
                     @csrf
+                    @method('UPDATE')
                     <div class="input-box flex-container flex-row">
-                        <input type="date" id="date" name="date" placeholder="Date" required> 
-                        <input type="text" id="item_name" name="item_name" placeholder="Item Name" required> 
-                        <input type="number" id="qty" name="qty" placeholder="Qty" required> 
-                        <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required> 
-                        <input type="number" id="total_price" name="total_price" placeholder="Total Price" required> 
-                        <input type="text" id="note" name="note" placeholder="Note" required> 
+                        <input type="date" id="date" name="date" placeholder="Date" required value="{{$expense->date}}">
+                        <input type="text" id="item_name" name="item_name" placeholder="Item Name" required value="{{$expense->item_name}}">
+                        <input type="number" id="qty" name="qty" placeholder="Qty" required value="{{$expense->qty}}">
+                        <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required value="{{$expense->unit_price}}">
+                        <input type="number" id="total_price" name="total_price" placeholder="Total Price" required value="{{$expense->total_price}}">
+                        <input type="text" id="note" name="note" placeholder="Note" required value="{{$expense->note}}">
                     </div> 
                     <div class="input-submit flex-container flex-end">
                         <div class="submit-wrap">
@@ -68,7 +69,7 @@
                     <td span="1" style="width: 20em;">Rp {{number_format($expense->unit_price, 0, '', '.')}}</td>
                     <td span="1" style="width: 20em;">Rp {{number_format($expense->total_price, 0, '', '.') }}</td>
                     <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $expense->note }}</td>
-                    <td span="1" style="width: 20em;"><a href="/expenses/{{$expense->id}}/edit">Edit</a>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a>
                     <form action="expenses/{{$expense->id}}" method="POST">
                         @method('DELETE')
                         @csrf
