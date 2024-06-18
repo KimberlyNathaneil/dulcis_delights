@@ -22,9 +22,16 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function (){
     return view('index');
+})->name('index');
+
+Route::group(['middleware' => 'SessionCheck'], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/record-expenses', [ExpenseController::class, 'record_expenses'])->name('record_expenses');
+    Route::get('/record-income', [IncomeController::class, 'record_income'])->name('record_income');
+    Route::get('/record-inventory', [InventoryController::class, 'record_inventory'])->name('record_inventory');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Route::get('login', [AuthController::class, 'index'])->name('login');
 

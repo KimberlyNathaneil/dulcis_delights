@@ -73,27 +73,42 @@ class UserController extends Controller
     public function index () {
         return view('login.index');
     }
-
-    public function login(Request $request)
-    {
-        $valid_users = [
-            ['email' => 'evelyn.aurelia@itbss.ac.id', 'password' => 'dulcisenak'],
-            ['email' => 'kimberly.nathaneil@itbss.ac.id', 'password' => 'dulcisenak'],
-            ['email' => 'valentino.chandra@itbss.ac.id', 'password' => 'dulcisenak'],
-        ];
-
-        $credentials = $request->only('email', 'password');
-
-        foreach ($valid_users as $user) {
-            if ($user['email'] == $credentials['email'] && $user['password'] == $credentials['password']) {
-                $userModel = new User;
-                $userModel->email = $user['email'];
-                Auth::login($userModel);
-                return redirect()->route('home');
-            }
-        }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+    
+    public function login(Request $request) {
+        $this->validate($request, [
+            'nameandemail' => 'required',
+            'password' => 'required',
         ]);
+
+        $login = $request->input('nameandemail');
+        $password = $request->input('password');
+
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL)? 'email' : 'name';
+
+        $user = User::where($fieldType, $login)->first();
+
+        if (!$user) {
+            return back()->withErrors([
+                'nameandemail' => 'Invalid email or username.',
+            ]);
+        }
+
+        if ($password != $user->password) {
+            return back()->withErrors([
+                'password' => 'Invalid password.',
+            ]);
+        }
+        Auth::login($user);
+        session(['loggedUser' => $user]);
+
+        return redirect()->route('home');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home');
     }
 }

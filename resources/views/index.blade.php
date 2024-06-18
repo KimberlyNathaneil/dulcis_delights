@@ -99,12 +99,18 @@ session_start();
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="nameandemail">Email or Username</label>
+                    <input type="text" id="nameandemail" name="nameandemail" required>
+                    @error('nameandemail')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
+                    @error('password')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn">Sign In</button>
             </form>

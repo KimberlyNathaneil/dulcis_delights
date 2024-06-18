@@ -16,9 +16,33 @@
                     <a class="header-link" href="/home">Home</a>
                     <a class="header-link header-active" href="/record_expenses">Record</a>
                     <a class="header-link" href="/ledger">Ledger</a>
-                    <!-- <a class="header-link" href="login.html">
+                    <a class="header-link" role="button" id="anchor">
                         <img class="account-logo" src="assets/account-logo.png">
-                    </a>    -->
+                        <div class="popup" id="popup">
+                            <div class="popup-content">
+                              <div class="top-section">
+                                <div class="left-column">
+                                  <img class="account-logo" src="assets/account-logo.png" alt="Account Logo">
+                                </div>
+                                <div class="right-column">
+                                  <div class="name-row">
+                                    <span>{{ session('loggedUser.name') }}</span>
+                                  </div>
+                                  <div class="email-row">
+                                    <span>{{ session('loggedUser.email') }}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="bottom-section">
+                                <form action="{{ route('logout') }}" method="get">
+                                    @csrf
+                                    <button class="logout-btn" id="logout-btn" type="submit">Logout</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                    </a>
+                    <div class="overlay" id="overlay"></div>
                 </div>                                   
             </div>
         </div>
@@ -77,3 +101,24 @@
         </div>
     </body>
 </html>
+<script>
+    const anchor = document.querySelector('#anchor');
+    const popup = document.querySelector('#popup');
+    const overlay = document.querySelector('#overlay');
+
+    anchor.addEventListener('click', (e) => {
+        if (e.target.id === 'logout-btn') {
+            return;
+        }
+        e.preventDefault();
+        overlay.classList.add('show');
+        popup.classList.add('show');
+    });
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            overlay.classList.remove('show');
+            popup.classList.remove('show');
+        }
+    });
+</script>
