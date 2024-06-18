@@ -49,15 +49,16 @@
         </div>  
 
         <section class="home" id="home">
+        
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
             <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; text-align: center; margin-top: 50px; ">
                 <h2 style="color: white">Month Expenses</h2>
-                <h2 style="color: white"> Rp {{$monthExpense}} </h2>
+                <h2 style="color: white"> Rp {{number_format($monthExpense, 0, '', '.')}} </h2>
             </div>
     
             <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; margin-top: 50px; ">
                 <h2 style="color: white">Month Income</h2>
-                <h2 style="color: white"> Rp {{$monthIncome}}  </h2>
+                <h2 style="color: white"> Rp {{number_format($monthIncome, 0, '', '.')}}   </h2>
             </div>
         </div>
             <!-- <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">

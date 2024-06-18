@@ -46,11 +46,11 @@
                 </div>                                   
             </div>
         </div>
-        <div class="record" id="record_income">
+        <div class="record" id="record_expenses">
             <div class="record-bar flex-container flex-row">
-                <a class="record-text" href="/record_expenses">Expenses</a>
-                <a class="record-text record-text-active" href="/record_income">Income</a>
-                <a class="record-text" href="/record_inventory">Inventory</a>
+                <a class="record-text" href="expenses">Expenses</a>
+                <a class="record-text record-text-active" href="incomes">Income</a>
+                <a class="record-text" href="inventories">Inventory</a>
             </div>
         </div>
         <div class="input" id="input_income">
@@ -87,9 +87,15 @@
                     <td span="1" style="width: 20em;">{{ $income->date }}</td>
                     <td span="1" style="width: 20em;">{{ $income->customer_name }}</td>
                     <td span="1" style="width: 5em">{{ $income->payment_method }}</td>
-                    <td span="1" style="width: 20em;">{{ $income->amount }}</td>
+                    <td span="1" style="width: 20em;">Rp {{number_format($income->amount, 0, '', '.')}}</td>
                     <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $income->note }}</td>
-                    <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a>
+                    <form action="incomes/{{$income->id}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button>Delete</button>
+                    </form>
+                    </td>
                 </tr>
                 @endforeach
                 <?php $i = 1; ?>

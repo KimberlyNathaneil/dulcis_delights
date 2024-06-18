@@ -46,11 +46,11 @@
                 </div>                                   
             </div>
         </div>
-        <div class="record" id="record_inventory">
+        <div class="record" id="record_expenses">
             <div class="record-bar flex-container flex-row">
-                <a class="record-text" href="/record_expenses">Expenses</a>
-                <a class="record-text" href="/record_income">Income</a>
-                <a class="record-text record-text-active" href="/record_inventory">Inventory</a>
+                <a class="record-text" href="expenses">Expenses</a>
+                <a class="record-text" href="incomes">Income</a>
+                <a class="record-text record-text-active" href="inventories">Inventory</a>
             </div>
         </div>
         <div class="input-inv" id="input_inventory">
@@ -81,9 +81,15 @@
                 @foreach ($inventories as $inventory )
                 <tr>
                     <td span="1" style="width: 20em;">{{ $inventory->item_name }}</td>
-                    <td span="1" style="width: 20em;">{{ $inventory->unit_price }}</td>
+                    <td span="1" style="width: 20em;">Rp {{number_format($inventory->unit_price, 0, '', '.')}}</td>
                     <td span="1" style="width: 5em">{{ $inventory->qty}}</td>
-                    <td span="1" style="width: 20em;"><a href="">Edit</a><button>Delete</button></td>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a>
+                    <form action="inventories/{{$inventory->id}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button>Delete</button>
+                    </form>
+                    </td>
                 </tr>
                 @endforeach
                 <?php $i = 1; ?>

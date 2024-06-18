@@ -44,15 +44,15 @@ class ExpenseController extends Controller
             'note' => request('note'),
         ]);
 
-        return redirect('record_expenses');
+        return redirect('expenses');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Expense $expense)
     {
-        //
+        // dd($expense);
     }
 
     /**
@@ -60,24 +60,36 @@ class ExpenseController extends Controller
      */
     public function edit(Expense $expense)
     {
-        return view('record_expenses', [
-            'expense' => $expense
+        $expenses = Expense::all();
+        return view('record_expenses_edit', [
+            'expense' => $expense,
+            'expenses' => $expenses
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Expense $expense)
     {
-        //
+        $expense->update([
+            'date' => request('date'),
+            'item_name' => request('item_name'),
+            'qty' => request('qty'),
+            'unit_price' => request('unit_price'),
+            'total_price' => request('total_price'),
+            'note' => request('note'),
+        ]);
+
+        return redirect('expenses');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+        return redirect('expenses');
     }
 }

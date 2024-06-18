@@ -41,7 +41,7 @@ class InventoryController extends Controller
             'qty' => request('qty'),
         ]);
 
-        return redirect('record_inventory');
+        return redirect('inventories');
     }
 
     /**
@@ -73,8 +73,9 @@ class InventoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Inventory $inventory)
     {
-        //
+        $inventory->delete();
+        return redirect('inventories');
     }
 }

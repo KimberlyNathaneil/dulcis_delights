@@ -43,7 +43,7 @@ class IncomeController extends Controller
             'note' => request('note'),
         ]);
 
-        return redirect('record_income');
+        return redirect('incomes');
     }
 
     /**
@@ -75,8 +75,9 @@ class IncomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Income $income)
     {
-        //
+        $income->delete();
+        return redirect('incomes');
     }
 }
