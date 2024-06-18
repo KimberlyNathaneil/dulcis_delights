@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title> Dulcis Delights - Income Record </title>
         <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -55,12 +55,13 @@
         </div>
         <div class="input-inv" id="input_inventory">
             <div class="input-content flex-container flex-col">
-                <form action="" method="post">
+                <form action="/inventories/{{ $inventory->id }}" method="post">
                     @csrf
+                    @method('put')
                     <div class="input-box flex-container flex-row">
-                        <input type="text" id="item_name" name="item_name" placeholder="Item Name" required>
-                        <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required>
-                        <input type="number" id="qty" name="qty" placeholder="Qty" required>
+                        <input type="text" id="item_name" name="item_name" placeholder="Item Name" required value="{{ $inventory->item_name }}">
+                        <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required value="{{ $inventory->unit_price }}">
+                        <input type="number" id="qty" name="qty" placeholder="Qty" required value="{{ $inventory->qty }}">
                     </div> 
                     <div class="input-submit flex-container flex-end">
                         <div class="submit-wrap">
@@ -83,7 +84,7 @@
                     <td span="1" style="width: 20em;">{{ $inventory->item_name }}</td>
                     <td span="1" style="width: 20em;">Rp {{number_format($inventory->unit_price, 0, '', '.')}}</td>
                     <td span="1" style="width: 5em">{{ $inventory->qty}}</td>
-                    <td span="1" style="width: 20em;"><a href="inventories/{{ $inventory->id }}/edit">Edit</a>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a>
                     <form action="inventories/{{$inventory->id}}" method="POST">
                         @method('DELETE')
                         @csrf

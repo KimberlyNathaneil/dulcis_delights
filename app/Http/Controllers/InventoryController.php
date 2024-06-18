@@ -47,9 +47,9 @@ class InventoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Inventory $inventory)
     {
-        //
+
     }
 
     /**
@@ -57,17 +57,25 @@ class InventoryController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-        return view('record_inventory', [
-            'inventory' => $inventory
+        $inventories = Inventory::all();
+        return view('record_inventory_edit', [
+            'inventory' => $inventory,
+            'inventories' => $inventories
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Inventory $inventory)
     {
-        //
+        $inventory->update([
+            'item_name' => request('item_name'),
+            'unit_price' => request('unit_price'),
+            'qty' => request('qty'),
+        ]);
+
+        return redirect('inventories');
     }
 
     /**

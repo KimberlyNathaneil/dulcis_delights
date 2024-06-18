@@ -33,7 +33,7 @@
             <div class="input-content flex-container flex-col">
                 <form action="/expenses/{{$expense->id}}" method="POST">
                     @csrf
-                    @method('UPDATE')
+                    @method('PUT')
                     <div class="input-box flex-container flex-row">
                         <input type="date" id="date" name="date" placeholder="Date" required value="{{$expense->date}}">
                         <input type="text" id="item_name" name="item_name" placeholder="Item Name" required value="{{$expense->item_name}}">

@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title> Dulcis Delights - Income Record </title>
         <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -55,14 +55,15 @@
         </div>
         <div class="input" id="input_income">
             <div class="input-content flex-container flex-col">
-                <form action="" method="post">
+                <form action="/incomes/{{$income->id}}" method="post">
                     @csrf
+                    @method('put')
                     <div class="input-box flex-container flex-row">
-                        <input type="date" id="date" name="date" placeholder="Date" required>
-                        <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name" required>
-                        <input type="text" id="payment_method" name="payment_method" placeholder="Payment Method" required>
-                        <input type="number" id="amount" name="amount" placeholder="Amount" required>
-                        <input type="text" id="note" name="note" placeholder="Note" required>
+                        <input type="date" id="date" name="date" placeholder="Date" required value="{{ $income->date }}">
+                        <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name" required value="{{ $income->customer_name }}">
+                        <input type="text" id="payment_method" name="payment_method" placeholder="Payment Method" required value="{{ $income->payment_method }}">
+                        <input type="number" id="amount" name="amount" placeholder="Amount" required value="{{ $income->amount }}">
+                        <input type="text" id="note" name="note" placeholder="Note" required value="{{ $income->note }}">
                     </div> 
                     <div class="input-submit flex-container flex-end">
                         <div class="submit-wrap">
@@ -89,7 +90,7 @@
                     <td span="1" style="width: 5em">{{ $income->payment_method }}</td>
                     <td span="1" style="width: 20em;">Rp {{number_format($income->amount, 0, '', '.')}}</td>
                     <td span="1" style="width: 20em; border-right: 0.2em solid black;">{{ $income->note }}</td>
-                    <td span="1" style="width: 20em;"><a href="/incomes/{{$income->id}}/edit">Edit</a>
+                    <td span="1" style="width: 20em;"><a href="">Edit</a>
                     <form action="incomes/{{$income->id}}" method="POST">
                         @method('DELETE')
                         @csrf

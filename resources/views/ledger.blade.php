@@ -104,7 +104,7 @@
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
           <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
               <h4>Filter</h4>
-              <select name="" id="ledger_select">
+              <select name="" id="ledger_select" onchange="ledge()">
                 <option value="income" onclick=ledge();>income</option>
                 <option value="expense" onclick=ledge();>expense</option>
               </select>

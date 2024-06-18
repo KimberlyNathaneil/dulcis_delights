@@ -59,17 +59,27 @@ class IncomeController extends Controller
      */
     public function edit(Income $income)
     {
-        return view('record_income', [
-            'income' => $income
+        $incomes = Income::all();
+        return view('record_income_edit', [
+            'income' => $income,
+            'incomes' => $incomes
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Income $income)
     {
-        //
+        $income->update([
+            'date' => request('date'),
+            'customer_name' => request('customer_name'),
+            'payment_method' => request('payment_method'),
+            'amount' => request('amount'),
+            'note' => request('note')
+        ]);
+
+        return redirect('incomes');
     }
 
     /**
