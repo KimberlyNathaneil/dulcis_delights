@@ -15,7 +15,7 @@
             <div class="header">
                 <div class="flex-container flex-row">
                     <a class="header-link" href="/home">Home</a>
-                    <a class="header-link" href="/record_expenses">Record</a>
+                    <a class="header-link" href="/expenses">Record</a>
                     <a class="header-link header-active" href="/ledger">Ledger</a>
                     <a class="header-link" role="button" id="anchor">
                       <img class="account-logo" src="assets/account-logo.png">

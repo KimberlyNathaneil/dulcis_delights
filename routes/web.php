@@ -1,13 +1,12 @@
 <?php
 
-use App\Models\income;
-use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LedgerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +25,13 @@ Route::get('/', function (){
 
 Route::group(['middleware' => 'SessionCheck'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/record-expenses', [ExpenseController::class, 'record_expenses'])->name('record_expenses');
-    Route::get('/record-income', [IncomeController::class, 'record_income'])->name('record_income');
-    Route::get('/record-inventory', [InventoryController::class, 'record_inventory'])->name('record_inventory');
+    Route::get('/ledger', [LedgerController::class, 'index'])->name('ledger');
+    Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses');
+    Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes');
+    Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories');
 });
 
+Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -40,12 +41,12 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::resource('expenses', ExpenseController::class);
-Route::resource('incomes', IncomeController::class);
-Route::resource('inventories', InventoryController::class);
+// Route::resource('expenses', ExpenseController::class);
+// Route::resource('incomes', IncomeController::class);
+// Route::resource('inventories', InventoryController::class);
 
 // Route::resource('ledger', LedgerController::class);
-Route::get('ledger', [LedgerController::class, 'index']);
+// Route::get('ledger', [LedgerController::class, 'index']);
 // Route::get('ledger', function(){
 //     $month = date('n');
 //     $year = 2024;
@@ -82,7 +83,5 @@ Route::get('ledger', [LedgerController::class, 'index']);
 
     
 // });
-
-Route::post('/login', [UserController::class, 'login'])->name('login');
 
 // Route::resource('record', RecordController::class);

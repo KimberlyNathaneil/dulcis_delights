@@ -17,4 +17,3 @@ class SessionCheck
         return $next($request);
     }
 }
-?>

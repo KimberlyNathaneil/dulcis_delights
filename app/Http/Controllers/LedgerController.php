@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Income;
+use App\Models\Expense;
 
-use App\Models\Inventory;
-use Illuminate\Http\Request;
 
 class LedgerController extends Controller
 {
@@ -48,9 +48,6 @@ class LedgerController extends Controller
         ]);
     }
         
-}   
-
-
     /**
      * Show the form for creating a new resource.
      */
