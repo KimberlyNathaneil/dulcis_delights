@@ -41,9 +41,9 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::resource('expenses', ExpenseController::class);
-Route::resource('incomes', IncomeController::class);
-Route::resource('inventories', InventoryController::class);
+// Route::resource('expenses', ExpenseController::class);
+// Route::resource('incomes', IncomeController::class);
+// Route::resource('inventories', InventoryController::class);
 
 // Route::resource('ledger', LedgerController::class);
 // Route::get('ledger', [LedgerController::class, 'index']);
