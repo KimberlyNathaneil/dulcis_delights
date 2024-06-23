@@ -58,7 +58,7 @@
                 <form action="" method="post">
                     @csrf
                     <div class="input-box flex-container flex-row">
-                        <input type="date" id="date" name="date" placeholder="Date" required>
+                        <input type="date" id="date" name="date" placeholder="Date" required value="{{income->date}}">
                         <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name" required>
                         <input type="text" id="payment_method" name="payment_method" placeholder="Payment Method" required>
                         <input type="number" id="amount" name="amount" placeholder="Amount" required>
