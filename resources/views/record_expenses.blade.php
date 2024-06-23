@@ -58,7 +58,7 @@
                 <form action="" method="post">
                     @csrf
                     <div class="input-box flex-container flex-row">
-                        <input type="date" id="date" name="date" placeholder="Date" required value="{{$expense->date}}"> 
+                        <input type="date" id="date" name="date" placeholder="Date" required> 
                         <input type="text" id="item_name" name="item_name" placeholder="Item Name" required> 
                         <input type="number" id="qty" name="qty" placeholder="Qty" required> 
                         <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required> 
@@ -127,10 +127,4 @@
             popup.classList.remove('show');
         }
     });
-
-    function hitung(){
-        var qty = parseInt(document.getElementById("qty").value);
-        var unit_price = parseInt(document.getElementById("unit_price").value);
-        document.getElementById("total_price").value = qty*unit_price;
-    }
 </script>
