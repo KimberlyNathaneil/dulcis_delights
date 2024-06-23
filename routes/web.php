@@ -24,9 +24,12 @@ Route::get('/', function (){
 })->name('index');
 
 Route::group(['middleware' => 'SessionCheck'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/ledger', [LedgerController::class, 'index'])->name('ledger');
-    Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses');
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Route::get('/ledger', [LedgerController::class, 'index'])->name('ledger');
+    // Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses');
+    Route::resource('expenses', ExpenseController::class);
+    Route::resource('incomes', IncomeController::class);
+    Route::resource('inventories', InventoryController::class);
     Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes');
     Route::get('/inventories', [InventoryController::class, 'index'])->name('inventories');
 });
