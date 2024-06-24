@@ -12,21 +12,22 @@ class LedgerController extends Controller
      */
     public function index()
     {
+        $months = ['April', 'May', 'June', 'July'];
         $month = date('n');
         $year = 2024;
 
         $total_expense = Expense::whereYear('date', $year)->whereMonth('date', $month)->sum('total_price');
         $total_income = Income::whereYear('date', $year)->whereMonth('date', $month)->sum('amount');
 
-        $april_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 4)->sum('total_price');
-        $may_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 5)->sum('total_price');
-        $june_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 6)->sum('total_price');
-        $july_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 7)->sum('total_price');
+        $April_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 4)->sum('total_price');
+        $May_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 5)->sum('total_price');
+        $June_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 6)->sum('total_price');
+        $July_total_expense = Expense::whereYear('date', $year)->whereMonth('date', 7)->sum('total_price');
 
-        $april_total_income = Income::whereYear('date', $year)->whereMonth('date', 4)->sum('amount');
-        $may_total_income = Income::whereYear('date', $year)->whereMonth('date', 5)->sum('amount');
-        $june_total_income = Income::whereYear('date', $year)->whereMonth('date', 6)->sum('amount');
-        $july_total_income = Income::whereYear('date', $year)->whereMonth('date', 7)->sum('amount');
+        $April_total_income = Income::whereYear('date', $year)->whereMonth('date', 4)->sum('amount');
+        $May_total_income = Income::whereYear('date', $year)->whereMonth('date', 5)->sum('amount');
+        $June_total_income = Income::whereYear('date', $year)->whereMonth('date', 6)->sum('amount');
+        $July_total_income = Income::whereYear('date', $year)->whereMonth('date', 7)->sum('amount');
 
         $expenses = Expense::whereYear('date', $year)->whereMonth('date', $month)->get();
         $incomes = Income::whereYear('date', $year)->whereMonth('date', $month)->get();
@@ -36,15 +37,15 @@ class LedgerController extends Controller
             'incomes' => $incomes,
             'total_expense' => $total_expense,
             'total_income' => $total_income,
-            'april_total_expense' => $april_total_expense,
-            'may_total_expense' => $may_total_expense,
-            'june_total_expense' => $june_total_expense,
-            'july_total_expense' => $july_total_expense,
-            'april_total_income' => $april_total_income,
-            'may_total_income' => $may_total_income,
-            'june_total_income' => $june_total_income,
-            'july_total_income' => $july_total_income,
-
+            'April_total_expense' => $April_total_expense,
+            'May_total_expense' => $May_total_expense,
+            'June_total_expense' => $June_total_expense,
+            'July_total_expense' => $July_total_expense,
+            'April_total_income' => $April_total_income,
+            'May_total_income' => $May_total_income,
+            'June_total_income' => $June_total_income,
+            'July_total_income' => $July_total_income,
+            'months' => $months,
         ]);
     }
         

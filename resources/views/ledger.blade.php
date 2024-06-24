@@ -48,294 +48,168 @@
             </div>    
 
     <div class="container">
-      <div class="left_Side">
-        <div style="font-size: 30px;">
-        <h3 class="title">MONTHLY BALANCES</h3>
-        </div>
-        <div style="margin-right: 1rem; margin-left: 1rem;">
-          <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
-              <a id="leftApr" href="#"><h2>April</h2></a>
-              <h2>Total Expense<br>Rp {{number_format($april_total_expense, 0, '', '.')}}</h2>
-              <h2>Total Income<br>Rp {{number_format($april_total_income, 0, '', '.')}}</h2>
+      <div class="left_Side" style="padding-top: 2.5rem;">
+        @foreach($months as $month)
+          <div style="margin-right: 1rem; margin-left: 1rem;">
+              <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
+                <a id="left{{ $month }}" onclick="ledgerShow('{{ $month }}', {{ ${$month.'_total_expense'} }}, {{ ${$month.'_total_income'} }});" href="#"><h2>{{ $month }}</h2></a>
+                  <h2>Total Expense<br>Rp {{ number_format(${$month.'_total_expense'}, 0, '', '.') }}</h2>
+                  <h2>Total Income<br>Rp {{ number_format(${$month.'_total_income'}, 0, '', '.') }}</h2>
+              </div>
           </div>
-        </div>
-
-        <div style="margin-right: 1rem; margin-left: 1rem;">
-          <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
-              <a id="leftMay" href="#"><h2>May</h2></a>
-              <h2>Total Expense<br>Rp {{number_format($may_total_expense, 0, '', '.')}}</h2>
-              <h2>Total Income<br>Rp {{number_format($may_total_income, 0, '', '.')}}</h2>
-          </div>
-        </div>
-
-        <div style="margin-right: 1rem; margin-left: 1rem;">
-          <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
-              <a id="leftJun" href="#"><h2>June</h2></a>
-              <h2>Total Expense<br>Rp {{number_format($june_total_expense, 0, '', '.')}}</h2>
-              <h2>Total Income<br>Rp {{number_format($june_total_income, 0, '', '.')}}</h2>
-          </div>
-        </div>
-
-        <div style="margin-right: 1rem; margin-left: 1rem;">
-          <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
-              <a id="leftJul" href="#"><h2>July</h2></a>
-              <h2>Total Expense<br>Rp {{number_format($july_total_expense, 0, '', '.')}}</h2>
-              <h2>Total Income<br>Rp {{number_format($july_total_income, 0, '', '.')}}</h2>
-          </div>
-        </div>
+        @endforeach
       </div>
-      <div class="right_side APR" id="apr">
+    
+      <div class="right_side" id="apr">
         <div>
-        <p class="title">JUN 2024</p>
-        <p class="subtitle">Current Month</p>
+            <p class="title" id="month-title">JUN 2024</p>
+            <p class="subtitle">Current Month</p>
         </div>
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
-              <h2>Month Expenses</h2>
-              <h2>Rp {{number_format($total_expense, 0, '', '.')}}</h2>
-          </div>
-  
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
-              <h2>Month Income</h2>
-              <h2>Rp {{number_format($total_income, 0, '', '.')}}</h2>
-          </div>
+            <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
+                <h2>Month Expenses</h2>
+                <h2 id="total-expense">Rp {{ number_format($total_expense, 0, '', '.') }}</h2>
+            </div>
+    
+            <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
+                <h2>Month Income</h2>
+                <h2 id="total-income">Rp {{ number_format($total_income, 0, '', '.') }}</h2>
+            </div>
+        </div>
+    
+        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
+            <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
+                <h4>Filter</h4>
+                <select name="" id="ledger_select" onchange="ledge()">
+                  <option value="" selected disabled hidden>Please select</option>
+                  <option value="income">income</option>
+                  <option value="expense">expense</option>
+                </select>
+            </div>
         </div>
 
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
-          <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
-              <h4>Filter</h4>
-              <select name="" id="ledger_select" onchange="ledge()">
-                <option value="income" onclick=ledge();>income</option>
-                <option value="expense" onclick=ledge();>expense</option>
-              </select>
-          </div>
-        </div>
 
         <!-- INI TABEL INCOME -->
-        <table id="show_income">
-          <tr>
-            <th>Transactions</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Day & Date</th>
-          </tr>
-          @foreach($incomes as $income)
-          <tr>
-            <td>{{$income->customer_name}}</td>
-            <td>Income</td>
-            <td>Rp {{number_format($income->amount, 0, '', '.')}}</td>
-            <td>{{$income->date}}</td>
-          </tr>
-          @endforeach
-        </table>
-        <!-- INI TABEL EXPENSE -->
-        <table id="show_expense">
-          <tr>
-            <th>Transactions</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Day & Date</th>
-          </tr>
-          @foreach($expenses as $expense)
-          <tr>
-            <td>{{$expense->item_name}}</td>
-            <td>Expense</td>
-            <td>Rp {{number_format($expense->total_price, 0, '', '.')}}</td>
-            <td>{{$expense->date}}</td>
-          </tr>
-          @endforeach
-        </table>
-      </div>
-
-      <div class="right_side MAY" id="may">
-        <div>
-        <p class="title">MAY 2024</p>
-        <p class="subtitle">Current Month</p>
-        </div>
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
-              <h2>Month Expenses</h2>
-              <h2> Rp 0</h2>
-          </div>
-  
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
-              <h2>Month Income</h2>
-              <h2>Rp 0</h2>
-          </div>
-        </div>
-
-        <!-- <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
-          <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
-              <h4>Filter</h4>
-              <select name="" id="ledger_select">
-                <option value="income">income</option>
-                <option value="expense">expense</option>
-              </select>
-          </div>
-        </div> -->
-
-        <!-- <table>
-          <tr>
-            <th>Transactions</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Day & Date</th>
-          </tr>
-          <tr>
-            <td>Mochi Milo</td>
-            <td>Income</td>
-            <td>Rp 240.000</td>
-            <td>Rabu, 3 Mei 2024</td>
-          </tr>
-          <tr>
-            <td>Mochi Stroberi</td>
-            <td>Income</td>
-            <td>Rp 250.000</td>
-            <td>Rabu, 3 Mei 2024</td>
-          </tr>
-          <tr>
-            <td>Mochi Matcha</td>
-            <td>Income</td>
-            <td>Rp 300.000</td>
-            <td>Rabu, 3 Mei 2024</td>
-          </tr>       
-        </table> -->
-      </div>
-
-      <!-- <div class="right_side JUN" id="jun">
-        <div>
-        <p class="title">JUN 2024</p>
-        <p class="subtitle">Current Month</p>
-        </div>
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
-              <h2>Month Expenses</h2>
-              <h2>Rp 0</h2>
-          </div>
-  
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
-              <h2>Month Income</h2>
-              <h2>Rp 0</h2>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
-          <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
-              <h4>Filter</h4>
-              <select name="" id="">
-                <option value="">income</option>
-                <option value="">expense</option>
-              </select>
-          </div>
-        </div>
-
-        <!-- <table>
-          <tr>
-            <th>Transactions</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Day & Date</th>
-          </tr>
-          <tr>
-            <td>Bubuk Milo</td>
-            <td>Expenses</td>
-            <td>Rp 50.000</td>
-            <td>Kamis, 18 Juni 2024</td>
-          </tr>
-          <tr>
-            <td>Bubuk Matcha</td>
-            <td>Expenses</td>
-            <td>Rp 40.000</td>
-            <td>Kamis, 18 Juni 2024</td>
-          </tr>
-          <tr>
-            <td>Anggur Muskat</td>
-            <td>Expenses</td>
-            <td>Rp 50.000</td>
-            <td>Jumat, 19 Juni 2024</td>
-          </tr>       
-        </table> -->
-      </div> -->
-
-      <!-- <div class="right_side JUL" id="jul">
-        <div>
-        <p class="title">JUL 2024</p>
-        <p class="subtitle">Current Month</p>
-        </div>
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
-              <h2>Month Expenses</h2>
-              <h2>Rp 0</h2>
-          </div>
-  
-          <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
-              <h2>Month Income</h2>
-              <h2>Rp 0</h2>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
-          <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
-              <h4>Filter</h4>
-              <select name="" id="">
-                <option value="">income</option>
-                <option value="">expense</option>
-              </select>
-          </div>
-        </div>
-
-        <table>
-          <tr>
-            <th>Transactions</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Day & Date</th>
-          </tr>
-          <tr>
-            <td>Grape Sando</td>
-            <td>Income</td>
-            <td>Rp 200.000</td>
-            <td>Selasa, 20 Juli 2024</td>
-          </tr>
-          <tr>
-            <td>Mochi Milo</td>
-            <td>Income</td>
-            <td>Rp 300.000</td>
-            <td>Selasa, 20 Juli 2024</td>
-          </tr>
-          <tr>
-            <td>Mochi Stroberi</td>
-            <td>Income</td>
-            <td>Rp 400.000</td>
-            <td>Selasa, 20 Juli 2024</td>
-          </tr>       
-        </table>
-      </div> -->
-      
-
-
-    </div>
     
-      
+        <!-- INI TABEL INCOME -->
+        <table id="show_income">
+          <tbody>
+            <tr>
+                <th>Transactions</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Day & Date</th>
+            </tr>
+            @foreach($incomes as $income)
+                @php
+                    $month = date('F', strtotime($income->date));
+                @endphp
+                @if($month == date('F'))
+                    <tr>
+                        <td>{{ $income->customer_name }}</td>
+                        <td>Income</td>
+                        <td>Rp {{ number_format($income->amount, 0, '', '.') }}</td>
+                        <td>{{ $income->date }}</td>
+                    </tr>
+                @endif
+            @endforeach
+          </tbody>
+        </table>
+    
+        <table id="show_expense">
+          <tbody>
+            <tr>
+                <th>Transactions</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Day & Date</th>
+            </tr>
+            @foreach($expenses as $expense)
+                @php
+                    $month = date('F', strtotime($expense->date));
+                @endphp
+                @if($month == date('F'))
+                    <tr>
+                        <td>{{ $expense->item_name }}</td>
+                        <td>Expense</td>
+                        <td>Rp {{ number_format($expense->total_price, 0, '', '.') }}</td>
+                        <td>{{ $expense->date }}</td>
+                    </tr>
+                @endif
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>      
   </body>
 </html>
-
 <script>
-  // alert
-  function ledge(){
-    let ledger = document.getElementById('ledger_select').value;
-    let show_income = document.querySelector('#show_income');
-    let show_expense = document.querySelector('#show_expense');
-    if(ledger == 'income'){
-      // alert('ini income');
-      show_expense.classList.add('hidden');
-      show_income.classList.remove('hidden');
-    }else{
-      // alert('ini expense');
-      show_income.classList.add('hidden');
-      show_expense.classList.remove('hidden');
-    };
-  }
+
+      let incomeData = {!! json_encode($incomes)!!};
+      let expensesData = {!! json_encode($expenses)!!};
+
+      function ledge(){
+        let ledger = document.getElementById('ledger_select').value;
+        let show_income = document.querySelector('#show_income');
+        let show_expense = document.querySelector('#show_expense');
+        if(ledger == 'income'){
+          show_expense.classList.add('hidden');
+          show_income.classList.remove('hidden');
+        }else{
+          show_income.classList.add('hidden');
+          show_expense.classList.remove('hidden');
+        };
+      }
+
+      function ledgerShow(month, totalExpense, totalIncome) {
+        console.log('ledgerShow called with month:', month);
+
+        document.getElementById("month-title").innerHTML = month + " 2024";
+        function formatNumber(number) {
+          return "Rp " + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        } 
+        // Update total expense and income
+        document.getElementById("total-expense").innerHTML = formatNumber(totalExpense);
+        document.getElementById("total-income").innerHTML = formatNumber(totalIncome);
+
+        var incomeTable = document.getElementById("show_income").getElementsByTagName("tbody")[0];
+        var expensesTable = document.getElementById("show_expense").getElementsByTagName("tbody")[0];
+
+        incomeTable.innerHTML = "";
+        expensesTable.innerHTML = "";
+
+        const monthMap = {
+          'April': 4,
+          'May': 5,
+          'June': 6,
+          'July': 7
+        };
+        
+        let selectedMonth = monthMap[month];
+
+        let filteredIncomes = incomeData.filter(function(income) {
+          const dateParts = income.date.split('-');
+          const month = parseInt(dateParts[1]);
+          return month === selectedMonth;
+        });
+      
+        let filteredExpenses = expensesData.filter(function(expense) {
+          const dateParts = expense.date.split('-');
+          const month = parseInt(dateParts[1]);
+          return month === selectedMonth;
+        });
+      
+        incomeTable.innerHTML = "<tr><th>Transactions</th><th>Category</th><th>Amount</th><th>Day & Date</th></tr>";
+        filteredIncomes.forEach(function(income) {
+          incomeTable.innerHTML += "<tr><td>" + income.customer_name + "</td><td>Income</td><td>Rp " + income.amount + "</td><td>" + income.date + "</td></tr>";
+        });
+        
+        expensesTable.innerHTML = "<tr><th>Transactions</th><th>Category</th><th>Amount</th><th>Day & Date</th></tr>";
+        filteredExpenses.forEach(function(expense) {
+          expensesTable.innerHTML += "<tr><td>" + expense.item_name + "</td><td>Expense</td><td>Rp " + expense.total_price + "</td><td>" + expense.date + "</td></tr>";
+        });
+      }
+
   const anchor = document.querySelector('#anchor');
   const popup = document.querySelector('#popup');
   const overlay = document.querySelector('#overlay');
