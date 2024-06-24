@@ -423,22 +423,18 @@
   background-color: #dddddd;
   }
   
-  #leftApr, #leftMay, #leftJun, #leftJul {
+  #leftApril, #leftMay, #leftJune, #leftJuly {
     color: inherit;
     -webkit-transition: color 100ms linear;
     -ms-transition: color 100ms linear;
     transition: color 100ms linear;
   }
   
-  #leftApr:hover, #leftMay:hover, #leftJun:hover, #leftJul:hover {
+  #leftApril:hover, #leftMay:hover, #leftJune:hover, #leftJuly:hover {
     color: var(--secondary);
     -webkit-transition: color 100ms linear;
     -ms-transition: color 100ms linear;
     transition: color 100ms linear;
-  }
-  
-  .MAY, .JUN, .JUL {
-    display: none;
   }
 
   .hidden{
