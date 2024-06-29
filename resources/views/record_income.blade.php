@@ -59,7 +59,7 @@
                     @csrf
                     <div class="input-box flex-container flex-row">
                         <input type="date" id="date" name="date" placeholder="Date" required>
-                        <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name" required>
+                        <input type="text" id="customer_name" name="customer_name" placeholder="Menu Name" required>
                         <input type="text" id="payment_method" name="payment_method" placeholder="Payment Method" required>
                         <input type="number" id="amount" name="amount" placeholder="Amount" required>
                         <input type="text" id="note" name="note" placeholder="Note" required>
@@ -76,7 +76,7 @@
             <table>
                 <tr>
                     <th span="1" style="width: 20em;">Day, Date</th>
-                    <th span="1" style="width: 20em;">Customer Name</th>
+                    <th span="1" style="width: 20em;">Menu Name</th>
                     <th span="1" style="width: 20em;">Payment Method</th>
                     <th span="1" style="width: 20em;">Amount</th>
                     <th span="1" style="width: 20em; border-right: 0.2em solid black;">Note</th>
