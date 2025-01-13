@@ -51,7 +51,7 @@
       <div class="left_Side" style="padding-top: 2.5rem;">
         @foreach($months as $month)
           <div style="margin-right: 1rem; margin-left: 1rem;">
-              <div style="background-color: #DDF2FD; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
+              <div style="background-color: #F6D6D6; display: flex; justify-content: space-between; border-radius: 16px; padding: 12px; font-size: 16px; color: black; text-align: center; margin-bottom: 20px; align-items: center;">
                 <a id="left{{ $month }}" onclick="ledgerShow('{{ $month }}', {{ ${$month.'_total_expense'} }}, {{ ${$month.'_total_income'} }});" href="#"><h2>{{ $month }}</h2></a>
                   <h2>Total Expense<br>Rp {{ number_format(${$month.'_total_expense'}, 0, '', '.') }}</h2>
                   <h2>Total Income<br>Rp {{ number_format(${$month.'_total_income'}, 0, '', '.') }}</h2>
@@ -66,19 +66,19 @@
             <p class="subtitle">Current Month</p>
         </div>
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
-            <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
+            <div style="background-color: #DA7297; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; ">
                 <h2>Month Expenses</h2>
                 <h2 id="total-expense">Rp {{ number_format($total_expense, 0, '', '.') }}</h2>
             </div>
     
-            <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
+            <div style="background-color: #DA7297; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center;  ">
                 <h2>Month Income</h2>
                 <h2 id="total-income">Rp {{ number_format($total_income, 0, '', '.') }}</h2>
             </div>
         </div>
     
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem; margin-top:20px;">
-            <div style="background-color: #D9D9D9; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
+            <div style="background-color: #DA7297; border-radius: 10px; padding: 12px; font-size: 16px; color: black; text-align: center; ">
                 <h4>Filter</h4>
                 <select name="" id="ledger_select" onchange="ledge()">
                   <option value="" selected disabled hidden>Please select</option>

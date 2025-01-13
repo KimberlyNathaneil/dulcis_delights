@@ -16,6 +16,7 @@
     --primary-alt: #365486;
     --text-box: #F1F1F1;
     --black: #000000;
+    --pink: #FFF5D7;
   
     --font-xs: 0.5em;
     --font-ps: 0.75em;
@@ -42,7 +43,7 @@
   body {
     margin: 0;
     font-family: 'Poppins';
-    background-color: var(--text-box);
+    background-color: var(--pink)
   }
   
   /* p, h1, h2, h3, h4, h5, h6 {
@@ -94,7 +95,7 @@
     z-index: 1;
     top: 0;
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: #E195AB;
   }
   
   .header {
@@ -140,7 +141,7 @@
     padding: 1% 1%;
     border: 0.2em solid black;
     border-radius: 20em;
-    background-color: var(--tertiary);
+    background-color: #E195AB;
     width: 35%;
     justify-content: space-evenly;
     box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.25);    
@@ -168,14 +169,14 @@
   .input {
     width: 95.7%;
     padding: 1% 2%;
-    background-color: #FFFFFF;
+    background-color: #E195AB;
     box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.25);
   }
   
   .input-inv {
     width: 50%;
     padding: 1% 2%;
-    background-color: #FFFFFF;
+    background-color: #DA498D;
     box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.25);
   }
   
@@ -190,14 +191,14 @@
   .input-box input {
     border: 0;
     border-radius: 1em;
-    background-color: var(--primary-passive);
+    background-color:#ad6484;
     width: 10em;
     height: 3em;
     text-align: center;
     font-family: 'Poppins';
     font-size: var(--font-md);
     font-weight: 600;
-    color: white;
+    color: black;
     margin-bottom: 0.5em;
   }
   
@@ -226,7 +227,7 @@
     border: 0.1em solid black;
     border-radius: 0.5em;
     padding: 5% 5%;
-    background-color: var(--tertiary);
+    background-color: #ad6484;
     height: 2em;
     font-family: 'Poppins';
     font-size: var(--font-md);
@@ -360,7 +361,7 @@
   .container .left_Side
   {
     position: relative;
-    background: #427d9d;
+    background: #b37486;
     width: 100%;
   }
   
@@ -378,7 +379,7 @@
   .container .right_side
   {
   position: relative;
-  background: #F5F5F5;
+  background: var(--pink);
   width: 100%;
   }
   
@@ -416,7 +417,7 @@
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
-  background-color: #DDF2FD;
+  background-color: #b37486;
   }
   
   tr:nth-child(even) {
@@ -508,7 +509,7 @@
 }
 
 .logout-btn {
-  background-color: #007bff;
+  background-color: #8f5b7b;
   color: #fff;
   border: none;
   font-size: 16px;
@@ -516,6 +517,6 @@
 }
 
 .logout-btn:hover {
-  background-color: #0069d9;
+  background-color: #8f5b7b;
   cursor: pointer;
 }
